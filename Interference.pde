@@ -52,8 +52,8 @@ void ColorPhasing(uint8_t pattern_){
     float phaseB_;
     uint8_t center_;
     uint8_t width_;
-    uint16_t fStep_;
-    uint16_t pStep_;
+    float fStep_;
+    float pStep_;
     bool fForward_;
     uint8_t turn_;
 	bool grnOff_;
@@ -87,9 +87,9 @@ void ColorPhasing(uint8_t pattern_){
 				phaseR_ = 0;
 				phaseG_ = 2*PI/3;
 				phaseB_ = 4*PI/3;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 1: // subtly changing pastels
@@ -105,36 +105,36 @@ void ColorPhasing(uint8_t pattern_){
 				phaseR_ = pStep_;
 				phaseG_ = pStep_;
 				phaseB_ = pStep_;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 3: //Red/Cyan change twinkle
 				phaseR_ = 0;
 				phaseG_ = pStep_;
 				phaseB_ = pStep_;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 4: //Blue/Yellow change twinkle
 				phaseR_ = pStep_;
 				phaseG_ = 0;
 				phaseB_ = pStep_;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 5: //Green/Magenta change twinkle
 				phaseR_ = pStep_;
 				phaseG_ = pStep_;
 				phaseB_ = 0;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 6: //Red twinkle 
@@ -142,25 +142,25 @@ void ColorPhasing(uint8_t pattern_){
 				phaseG_ = pStep_;
 				phaseB_ = pStep_;
 				frequencyR_ = 0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 7: //Green twinkle 
 				phaseR_ = pStep_;
 				phaseG_ = 0;
 				phaseB_ = pStep_;
-				frequencyR_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
 				frequencyG_ = 0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 8: //Blue twinkle
 				phaseR_ = pStep_;
 				phaseG_ = pStep_;
 				phaseB_ = 0;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
 				frequencyB_ = 0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
@@ -172,27 +172,27 @@ void ColorPhasing(uint8_t pattern_){
 					phaseR_ = 0;
 					phaseG_ = (2*PI/360) * pStep_;
 					phaseB_ = (4*PI/360) * pStep_;
-					frequencyR_ = (float)fStep_ / 200.0;
-					frequencyG_ = (float)fStep_ / 200.0;
-					frequencyB_ = (float)fStep_ / 200.0;
+					frequencyR_ = fStep_ / 200.0;
+					frequencyG_ = fStep_ / 200.0;
+					frequencyB_ = fStep_ / 200.0;
 					break;
 				case 2:
 				case 3:
 					phaseG_ = 0;
 					phaseB_ = (2*PI/360) * pStep_;
 					phaseR_ = (4*PI/360) * pStep_;
-					frequencyR_ = (float)fStep_ / 200.0;
-					frequencyG_ = (float)fStep_ / 200.0;
-					frequencyB_ = (float)fStep_ / 200.0;
+					frequencyR_ = fStep_ / 200.0;
+					frequencyG_ = fStep_ / 200.0;
+					frequencyB_ = fStep_ / 200.0;
 					break;
 				case 4:
 				case 5:
 					phaseB_ = 0;
 					phaseR_ = (2*PI/360) * pStep_;
 					phaseG_ = (4*PI/360) * pStep_;
-					frequencyR_ = (float)fStep_ / 200.0;
-					frequencyG_ = (float)fStep_ / 200.0;
-					frequencyB_ = (float)fStep_ / 200.0;
+					frequencyR_ = fStep_ / 200.0;
+					frequencyG_ = fStep_ / 200.0;
+					frequencyB_ = fStep_ / 200.0;
 					break;
 				}
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
@@ -201,27 +201,27 @@ void ColorPhasing(uint8_t pattern_){
 				phaseR_ = 0;
 				phaseG_ = 2*PI/3;
 				phaseB_ = 4*PI/3;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = true; bluOff_ = false;
 				break;
 			case 11: //yellow twinkle
 				phaseR_ = 0;
 				phaseG_ = 2*PI/3;
 				phaseB_ = 4*PI/3;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = true;
 				break;
 			case 12: //cyan twinkle
 				phaseR_ = 0;
 				phaseG_ = 2*PI/3;
 				phaseB_ = 4*PI/3;
-				frequencyR_ = (float)fStep_ / 200.0;
-				frequencyG_ = (float)fStep_ / 200.0;
-				frequencyB_ = (float)fStep_ / 200.0;
+				frequencyR_ = fStep_ / 200.0;
+				frequencyG_ = fStep_ / 200.0;
+				frequencyB_ = fStep_ / 200.0;
 				redOff_ = true; grnOff_ = false; bluOff_ = false;
 				break;
 			default: //nothing - a still pastel rainbow
@@ -250,11 +250,11 @@ void ColorPhasing(uint8_t pattern_){
 		}
 
 			//set direction: 1 2 .. 98 .. 160 .. 98 .. 2 1
-		if (fStep_ == 200)
+		if (fStep_ >= 200.0)
 		{
 			fForward_ = false;
 		}
-		if (fStep_ == -1)
+		if (fStep_ <= -1.0)
 		{
 			fForward_ = true;
 			turn_++;
@@ -263,21 +263,19 @@ void ColorPhasing(uint8_t pattern_){
 		if (fForward_)
 		{
 
-			fStep_++;
+			fStep_ = fStep_ + 1.0;
 		} else {
-			fStep_--;
+			fStep_ = fStep_ - 1.0;
 		}
 
 		pStep_++;
-		if (pStep_ == 800)
+		if (pStep_ >= 800.0)
 		{
-			pStep_ = 0;
+			pStep_ = 0.0;
 		}
 
 		delay(wait_);
 
 		strip.show();							
-} while (true);
-{
-}
+	} while (true);
 }
