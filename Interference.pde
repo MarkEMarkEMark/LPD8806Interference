@@ -39,6 +39,7 @@ void setup() {
 
 void loop() {
 	//pattern 2 gives most graphic example of flicker
+	//replace with anything from 0 to 19 to see all patterns
 	ColorPhasing(2);
 }
 
@@ -102,9 +103,9 @@ void ColorPhasing(uint8_t pattern_){
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 2: //White twinkle
-				phaseR_ = pStep_;
-				phaseG_ = pStep_;
-				phaseB_ = pStep_;
+				phaseR_ = 1.0;
+				phaseG_ = 1.0;
+				phaseB_ = 1.0;
 				frequencyR_ = fStep_ / 200.0;
 				frequencyG_ = fStep_ / 200.0;
 				frequencyB_ = fStep_ / 200.0;
@@ -112,25 +113,25 @@ void ColorPhasing(uint8_t pattern_){
 				break;
 			case 3: //Red/Cyan change twinkle
 				phaseR_ = 0;
-				phaseG_ = pStep_;
-				phaseB_ = pStep_;
+				phaseG_ = 1.0;
+				phaseB_ = 1.0;
 				frequencyR_ = fStep_ / 200.0;
 				frequencyG_ = fStep_ / 200.0;
 				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 4: //Blue/Yellow change twinkle
-				phaseR_ = pStep_;
+				phaseR_ = 1.0;
 				phaseG_ = 0;
-				phaseB_ = pStep_;
+				phaseB_ = 1.0;
 				frequencyR_ = fStep_ / 200.0;
 				frequencyG_ = fStep_ / 200.0;
 				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 5: //Green/Magenta change twinkle
-				phaseR_ = pStep_;
-				phaseG_ = pStep_;
+				phaseR_ = 1.0;
+				phaseG_ = 1.0;
 				phaseB_ = 0;
 				frequencyR_ = fStep_ / 200.0;
 				frequencyG_ = fStep_ / 200.0;
@@ -139,25 +140,25 @@ void ColorPhasing(uint8_t pattern_){
 				break;
 			case 6: //Red twinkle 
 				phaseR_ = 0;
-				phaseG_ = pStep_;
-				phaseB_ = pStep_;
+				phaseG_ = 1.0;
+				phaseB_ = 1.0;
 				frequencyR_ = 0;
 				frequencyG_ = fStep_ / 200.0;
 				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 7: //Green twinkle 
-				phaseR_ = pStep_;
+				phaseR_ = 1.0;
 				phaseG_ = 0;
-				phaseB_ = pStep_;
+				phaseB_ = 1.0;
 				frequencyR_ = fStep_ / 200.0;
 				frequencyG_ = 0;
 				frequencyB_ = fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 8: //Blue twinkle
-				phaseR_ = pStep_;
-				phaseG_ = pStep_;
+				phaseR_ = 1.0;
+				phaseG_ = 1.0;
 				phaseB_ = 0;
 				frequencyR_ = fStep_ / 200.0;
 				frequencyG_ = fStep_ / 200.0;
@@ -223,6 +224,60 @@ void ColorPhasing(uint8_t pattern_){
 				frequencyG_ = fStep_ / 200.0;
 				frequencyB_ = fStep_ / 200.0;
 				redOff_ = true; grnOff_ = false; bluOff_ = false;
+				break;
+			case 13: //colours slightly askew with white peak (C/M/G/R)
+				phaseR_ = 0.0;
+				phaseG_ = 2.0 * PI /3.0;
+				phaseB_ = 1.0;
+				frequencyR_ = (float)fStep_ / SIZE;
+				frequencyG_ = (float)fStep_ / SIZE;
+				frequencyB_ = (float)fStep_ / SIZE;
+				redOff_ = false; grnOff_ = false; bluOff_ = false;
+				break;
+			case 14: //colours slightly askew with white peak (M/Y/B/G)
+				phaseR_ = 1.0;
+				phaseG_ = 0.0;
+				phaseB_ = 2.0 * PI /3.0;
+				frequencyR_ = (float)fStep_ / SIZE;
+				frequencyG_ = (float)fStep_ / SIZE;
+				frequencyB_ = (float)fStep_ / SIZE;
+				redOff_ = false; grnOff_ = false; bluOff_ = false;
+				break;
+			case 15: //colours slightly askew with white peak (Y/C/R/B)
+				phaseR_ = 2.0 * PI /3.0;
+				phaseG_ = 1.0;
+				phaseB_ = 0.0;
+				frequencyR_ = (float)fStep_ / SIZE;
+				frequencyG_ = (float)fStep_ / SIZE;
+				frequencyB_ = (float)fStep_ / SIZE;
+				redOff_ = false; grnOff_ = false; bluOff_ = false;
+				break;
+			case 16:  //colours slightly askew (C/Y/G/R)
+				phaseR_ = 0.0;
+				phaseG_ = 2.0 * PI /3.0;
+				phaseB_ = 4.0 * PI /3.0;
+				frequencyR_ = (float)fStep_ / SIZE;
+				frequencyG_ = (float)fStep_ / SIZE;
+				frequencyB_ = 0.0;
+				redOff_ = false; grnOff_ = false; bluOff_ = false;
+				break;
+			case 17:  //colours slightly askew (M/C/B/G)
+				phaseR_ = 4.0 * PI /3.0;
+				phaseG_ = 0.0;
+				phaseB_ = 2.0 * PI /3.0;
+				frequencyR_ = 0.0;
+				frequencyG_ = (float)fStep_ / SIZE;
+				frequencyB_ = (float)fStep_ / SIZE;
+				redOff_ = false; grnOff_ = false; bluOff_ = false;
+				break;
+			case 18:  //colours slightly askew (Y/M/R/B)
+				phaseR_ = 2.0 * PI /3.0;
+				phaseG_ = 4.0 * PI /3.0;
+				phaseB_ = 0.0;
+				frequencyR_ = (float)fStep_ / SIZE;
+				frequencyG_ = 0.0;
+				frequencyB_ = (float)fStep_ / SIZE;
+				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			default: //nothing - a still pastel rainbow
 				;
