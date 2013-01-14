@@ -39,7 +39,7 @@ void setup() {
 
 void loop() {
 	//pattern 2 gives most graphic example of flicker
-	ColorPhasing(2);
+	ColorPhasing(15);
 }
 
 void ColorPhasing(uint8_t pattern_){
@@ -81,7 +81,7 @@ void ColorPhasing(uint8_t pattern_){
 	do
 	{
 
-		switch (pattern_ % 14)
+		switch (pattern_ % 20)
 		{
 			case 0:  //Wavey pastels
 				phaseR_ = 0;
