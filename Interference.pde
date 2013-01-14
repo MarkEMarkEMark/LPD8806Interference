@@ -39,7 +39,6 @@ void setup() {
 
 void loop() {
 	//pattern 2 gives most graphic example of flicker
-	//replace with anything from 0 to 19 to see all patterns
 	ColorPhasing(2);
 }
 
@@ -53,8 +52,8 @@ void ColorPhasing(uint8_t pattern_){
     float phaseB_;
     uint8_t center_;
     uint8_t width_;
-    float fStep_;
-    float pStep_;
+    uint16_t fStep_;
+    uint16_t pStep_;
     bool fForward_;
     uint8_t turn_;
 	bool grnOff_;
@@ -229,35 +228,35 @@ void ColorPhasing(uint8_t pattern_){
 				phaseR_ = 0.0;
 				phaseG_ = 2.0 * PI /3.0;
 				phaseB_ = 1.0;
-				frequencyR_ = (float)fStep_ / SIZE;
-				frequencyG_ = (float)fStep_ / SIZE;
-				frequencyB_ = (float)fStep_ / SIZE;
+				frequencyR_ = (float)fStep_ / 200.0;
+				frequencyG_ = (float)fStep_ / 200.0;
+				frequencyB_ = (float)fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 14: //colours slightly askew with white peak (M/Y/B/G)
 				phaseR_ = 1.0;
 				phaseG_ = 0.0;
 				phaseB_ = 2.0 * PI /3.0;
-				frequencyR_ = (float)fStep_ / SIZE;
-				frequencyG_ = (float)fStep_ / SIZE;
-				frequencyB_ = (float)fStep_ / SIZE;
+				frequencyR_ = (float)fStep_ / 200.0;
+				frequencyG_ = (float)fStep_ / 200.0;
+				frequencyB_ = (float)fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 15: //colours slightly askew with white peak (Y/C/R/B)
 				phaseR_ = 2.0 * PI /3.0;
 				phaseG_ = 1.0;
 				phaseB_ = 0.0;
-				frequencyR_ = (float)fStep_ / SIZE;
-				frequencyG_ = (float)fStep_ / SIZE;
-				frequencyB_ = (float)fStep_ / SIZE;
+				frequencyR_ = (float)fStep_ / 200.0;
+				frequencyG_ = (float)fStep_ / 200.0;
+				frequencyB_ = (float)fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 16:  //colours slightly askew (C/Y/G/R)
 				phaseR_ = 0.0;
 				phaseG_ = 2.0 * PI /3.0;
 				phaseB_ = 4.0 * PI /3.0;
-				frequencyR_ = (float)fStep_ / SIZE;
-				frequencyG_ = (float)fStep_ / SIZE;
+				frequencyR_ = (float)fStep_ / 200.0;
+				frequencyG_ = (float)fStep_ / 200.0;
 				frequencyB_ = 0.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
@@ -266,17 +265,17 @@ void ColorPhasing(uint8_t pattern_){
 				phaseG_ = 0.0;
 				phaseB_ = 2.0 * PI /3.0;
 				frequencyR_ = 0.0;
-				frequencyG_ = (float)fStep_ / SIZE;
-				frequencyB_ = (float)fStep_ / SIZE;
+				frequencyG_ = (float)fStep_ / 200.0;
+				frequencyB_ = (float)fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			case 18:  //colours slightly askew (Y/M/R/B)
 				phaseR_ = 2.0 * PI /3.0;
 				phaseG_ = 4.0 * PI /3.0;
 				phaseB_ = 0.0;
-				frequencyR_ = (float)fStep_ / SIZE;
+				frequencyR_ = (float)fStep_ / 200.0;
 				frequencyG_ = 0.0;
-				frequencyB_ = (float)fStep_ / SIZE;
+				frequencyB_ = (float)fStep_ / 200.0;
 				redOff_ = false; grnOff_ = false; bluOff_ = false;
 				break;
 			default: //nothing - a still pastel rainbow
@@ -305,11 +304,11 @@ void ColorPhasing(uint8_t pattern_){
 		}
 
 			//set direction: 1 2 .. 98 .. 160 .. 98 .. 2 1
-		if (fStep_ >= 200.0)
+		if (fStep_ == 200)
 		{
 			fForward_ = false;
 		}
-		if (fStep_ <= -1.0)
+		if (fStep_ == -1)
 		{
 			fForward_ = true;
 			turn_++;
@@ -318,19 +317,21 @@ void ColorPhasing(uint8_t pattern_){
 		if (fForward_)
 		{
 
-			fStep_ = fStep_ + 1.0;
+			fStep_++;
 		} else {
-			fStep_ = fStep_ - 1.0;
+			fStep_--;
 		}
 
 		pStep_++;
-		if (pStep_ >= 800.0)
+		if (pStep_ == 800)
 		{
-			pStep_ = 0.0;
+			pStep_ = 0;
 		}
 
 		delay(wait_);
 
 		strip.show();							
-	} while (true);
+} while (true);
+{
+}
 }
